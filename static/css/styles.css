@@ -1,0 +1,318 @@
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap');
+
+:root {
+    --primary-color: #4a0e4e;
+    /* Deep Royal Purple */
+    --secondary-color: #c5a059;
+    /* Gold */
+    --accent-color: #f3e5ab;
+    /* Champagne */
+    --text-dark: #2d2d2d;
+    --text-light: #ffffff;
+    --bg-light: #fdfdfd;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    color: var(--text-dark);
+    /* Background pattern handled in base.html mostly, but ensuring fallback */
+    background-color: var(--bg-light);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.navbar-brand {
+    font-family: 'Playfair Display', serif;
+}
+
+/* Navbar */
+.navbar {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    border-bottom: 2px solid var(--secondary-color);
+}
+
+.navbar-brand {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary-color) !important;
+}
+
+.nav-link {
+    font-weight: 500;
+    color: var(--text-dark) !important;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--secondary-color) !important;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(74, 14, 78, 0.2);
+}
+
+.btn-primary:hover {
+    background-color: #350839;
+    border-color: #350839;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(74, 14, 78, 0.3);
+}
+
+.btn-outline-primary {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+    border-width: 2px;
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: #fff;
+}
+
+/* Cards */
+.card {
+    border: none;
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+/* Forms */
+.form-control {
+    border-radius: 8px;
+    padding: 12px;
+    border: 1px solid #e0e0e0;
+    transition: all 0.3s;
+}
+
+.form-control:focus {
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 0.2rem rgba(197, 160, 89, 0.25);
+}
+
+/* Footer */
+.footer {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    padding: 60px 0 30px;
+    margin-top: 80px;
+    position: relative;
+    overflow: hidden;
+}
+
+.footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--secondary-color), var(--accent-color), var(--secondary-color));
+}
+
+.footer-link {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-link:hover {
+    color: var(--secondary-color);
+}
+
+.social-icon {
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    margin-right: 10px;
+    transition: all 0.3s;
+}
+
+.social-icon:hover {
+    background: var(--secondary-color);
+    color: var(--primary-color);
+    transform: scale(1.1);
+}
+
+/* Animations */
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+.floating-element {
+    animation: float 4s ease-in-out infinite;
+}
+
+.fade-in-up {
+    animation: fadeInUp 0.8s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Title Container with Instruments */
+.title-container {
+    position: relative;
+    padding: 0 100px;
+    /* Reduced space */
+    display: inline-block;
+}
+
+/* Left Instrument: Nadaswaram */
+.instrument-left {
+    position: absolute;
+    left: -100px;
+    /* Adjust position relative to title */
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+}
+
+.nadaswaram-side {
+    width: 100px;
+    /* Considerably smaller */
+    transform: rotate(-30deg);
+    animation: swaySide 3s ease-in-out infinite;
+    filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.1));
+}
+
+/* Right Instrument: Thavil */
+.instrument-right {
+    position: absolute;
+    right: -100px;
+    /* Adjust position relative to title */
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+}
+
+.thavil-side {
+    width: 80px;
+    /* Considerably smaller */
+    animation: beatSide 1s infinite alternate;
+    filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.1));
+}
+
+/* Floating Notes Overlay */
+.notes-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    /* Let clicks pass through */
+    z-index: 20;
+}
+
+.note-float {
+    position: absolute;
+    width: 30px;
+    /* Smaller notes */
+    opacity: 0;
+    color: var(--secondary-color);
+}
+
+/* Start from the right side (near drum) */
+.note-1 {
+    right: -40px;
+    animation: floatNotePath 3s infinite linear;
+}
+
+.note-2 {
+    right: -20px;
+    animation: floatNotePath 3s infinite linear 1s;
+}
+
+.note-3 {
+    right: -50px;
+    animation: floatNotePath 3s infinite linear 2s;
+}
+
+@keyframes beat {
+    0% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(1.05);
+    }
+}
+
+@keyframes sway {
+    0% {
+        transform: rotate(-15deg) translateY(0);
+    }
+
+    50% {
+        transform: rotate(-10deg) translateY(-10px);
+    }
+
+    100% {
+        transform: rotate(-15deg) translateY(0);
+    }
+}
+
+@keyframes floatNotes {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.5);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translate(-30%, -150%) scale(1) rotate(20deg);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(-10%, -250%) scale(1.2) rotate(40deg);
+    }
+}
