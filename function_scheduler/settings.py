@@ -19,6 +19,16 @@ import dj_database_url
 RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
 if RENDER_EXTERNAL_HOSTNAME:
     CSRF_TRUSTED_ORIGINS = [f'https://{RENDER_EXTERNAL_HOSTNAME}']
+    
+    # Render is behind a proxy that terminates SSL
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+    
+    # Session and CSRF cookies should be secure in production
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
+    
+    # Optional: If your site is only ever accessed via HTTPS, set this
+    SECURE_SSL_REDIRECT = True
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
