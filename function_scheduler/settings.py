@@ -90,12 +90,20 @@ WSGI_APPLICATION = 'function_scheduler.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config(
-        # Feel free to alter this value to suit your needs.
-        default='sqlite:///db.sqlite3',
-        conn_max_age=600
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
+
+database_url = os.environ.get("DATABASE_URL")
+if database_url:
+    try:
+        DATABASES['default'] = dj_database_url.parse(database_url, conn_max_age=600)
+    except Exception as e:
+        print(f"Database configuration error: {e}")
+        # Fallback to sqlite is already set above
+
 
 
 # Password validation
